@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="70dp"
+    android:background="?attr/selectableItemBackground"
+    style="@style/SelectableItemBackground">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="3">
+
+        <!-- Sección de cada noticia -->
+        <TextView
+            android:id="@+id/seccionList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="8dp"
+            android:lineSpacingMultiplier="1.15"
+            android:text="Sección noticia"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="12sp" />
+
+        <!-- Titular de cada noticia -->
+        <TextView
+            android:id="@+id/titularList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:textSize="17sp"
+            android:text="Titular noticia"
+            android:lineSpacingMultiplier="1.1"
+            android:textColor="#000000" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp">
+
+        <!-- Imagen de cada noticia -->
+        <ImageView
+            android:id="@+id/imagenList"
+            android:layout_width="110dp"
+            android:layout_height="50dp"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:layout_weight="1"
+            android:src="@mipmap/logo"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
+    </FrameLayout>
+
+</LinearLayout>

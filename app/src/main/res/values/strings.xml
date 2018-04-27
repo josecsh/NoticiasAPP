@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">NoticiasAPP</string>
+    <string name="id_extra">EXTRAID</string>
+    <string name="seccion">Sección</string>
+</resources>
