@@ -25,10 +25,10 @@ import org.json.JSONObject;
 import java.util.Arrays;
 
 
-public class ListFragment extends Fragment {
+public class GeoListFragment extends Fragment {
 
     // Etiqueta de depuración
-    private static final String TAG = ListFragment.class.getSimpleName();
+    private static final String TAG = GeoListFragment.class.getSimpleName();
 
     // Adaptador del recycler view
     private AdaptadorLista adapter;
@@ -43,7 +43,15 @@ public class ListFragment extends Fragment {
 
     private FloatingActionButton fab;
 
-    public ListFragment() {}
+    public GeoListFragment() {}
+
+    public static GeoListFragment createInstance(Bundle arg) {
+        GeoListFragment f = new GeoListFragment();
+        if(arg != null){
+            f.setArguments(arg);
+        }
+        return f;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,15 +59,19 @@ public class ListFragment extends Fragment {
 
         final View v = inflater.inflate(R.layout.fragment_list, container, false);
 
+        Toast.makeText(getActivity(), "Localidad: " + getArguments().getString("ciudad"), Toast.LENGTH_LONG).show();
+
         // Botón flotante para pasar al modo de geolocalización
         fab = (FloatingActionButton) v.findViewById(R.id.fab_location);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+              /*
                 //Snackbar.make(view, "Se presionó el FAB", Snackbar.LENGTH_LONG).setAction("Action", null).show();
 
                 Intent i = new Intent(v.getContext(), Geolocation.class);
                 startActivity(i);
+              */
             }
         });
 
@@ -90,27 +102,27 @@ public class ListFragment extends Fragment {
 
         // Petición GET
         VolleyS.getInstance(getActivity()).addToRequestQueue(
-                        new JsonObjectRequest(
-                                Request.Method.GET,
-                                url,
-                                null,
-                                new Response.Listener<JSONObject>() {
+                new JsonObjectRequest(
+                        Request.Method.GET,
+                        url,
+                        null,
+                        new Response.Listener<JSONObject>() {
 
-                                    @Override
-                                    public void onResponse(JSONObject response) {
-                                        // Procesar la respuesta Json
-                                        procesarRespuesta(response);
-                                    }
-                                },
-                                new Response.ErrorListener() {
-                                    @Override
-                                    public void onErrorResponse(VolleyError error) {
-                                        Toast.makeText(getActivity(), "Error Volley: " + error.toString(), Toast.LENGTH_SHORT).show();
-                                    }
-                                }
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                // Procesar la respuesta Json
+                                procesarRespuesta(response);
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(getActivity(), "Error Volley: " + error.toString(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
 
-                        )
-                );
+                )
+        );
 
     }
 
