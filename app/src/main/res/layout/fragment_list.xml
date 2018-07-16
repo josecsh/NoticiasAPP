@@ -23,7 +23,7 @@
         android:layout_margin="16dp"
         android:layout_gravity="end|bottom"
         android:src="@mipmap/location"
-        app:backgroundTint="@android:color/holo_red_light"
+        app:backgroundTint="@android:color/holo_red_dark"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"/>
