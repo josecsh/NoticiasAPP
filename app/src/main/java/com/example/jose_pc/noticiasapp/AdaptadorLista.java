@@ -34,6 +34,9 @@ public class AdaptadorLista extends RecyclerView.Adapter<AdaptadorLista.NoticiaV
     // Contexto donde actua el recycler view
     private Context context;
 
+    String distGranada[] = {"Genil", "Zaidín", "Ronda", "Centro", "Albaycín", "Beiro", "Chana", "Norte"};
+    String loc;
+
     public AdaptadorLista(Context context, List<Noticia> noticias) {
         this.context = context;
         this.noticias = noticias;
@@ -54,6 +57,15 @@ public class AdaptadorLista extends RecyclerView.Adapter<AdaptadorLista.NoticiaV
     public void onBindViewHolder(NoticiaViewHolder viewHolder, int i) {
         viewHolder.titular.setText(noticias.get(i).getTitular());
         viewHolder.seccion.setText(noticias.get(i).getSeccion());
+
+        loc = noticias.get(i).getUbicacion();
+        for(int j=0; j<distGranada.length; ++j){
+            if(noticias.get(i).getUbicacion().equals(distGranada[j])) {
+                loc = "Granada - " + noticias.get(i).getUbicacion();
+            }
+        }
+
+        viewHolder.ubicacion.setText(loc);
     }
 
     @Override
@@ -65,15 +77,15 @@ public class AdaptadorLista extends RecyclerView.Adapter<AdaptadorLista.NoticiaV
 
         // Campos respectivos de una noticia
         public TextView titular;
-        public ImageView imagen;
         public TextView seccion;
+        public TextView ubicacion;
         public ItemClickListener listener;
 
         public NoticiaViewHolder(View v, ItemClickListener listener) {
             super(v);
-            titular = (TextView) v.findViewById(R.id.titularList);
-            imagen = (ImageView) v.findViewById(R.id.imagenList);
-            seccion = (TextView) v.findViewById(R.id.seccionList);
+            titular = v.findViewById(R.id.titularList);
+            seccion = v.findViewById(R.id.seccionList);
+            ubicacion = v.findViewById(R.id.ubicacionList);
             this.listener = listener;
             v.setOnClickListener(this);
         }

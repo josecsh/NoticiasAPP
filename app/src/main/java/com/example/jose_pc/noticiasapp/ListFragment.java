@@ -56,8 +56,6 @@ public class ListFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Snackbar.make(view, "Se presionó el FAB", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-
                 Intent i = new Intent(v.getContext(), Geolocation.class);
                 startActivity(i);
             }
@@ -86,8 +84,6 @@ public class ListFragment extends Fragment {
         // URL del servidor
         String url = "http://192.168.1.36/noticias_web/gestion/php_scripts/app_obtener_noticias.php";
 
-        //String url = "http://bahia.ugr.es/~noticiasapp/gestion/php_scripts/app_obtener_noticias.php";
-
         // Petición GET
         VolleyS.getInstance(getActivity()).addToRequestQueue(
                         new JsonObjectRequest(
@@ -105,7 +101,7 @@ public class ListFragment extends Fragment {
                                 new Response.ErrorListener() {
                                     @Override
                                     public void onErrorResponse(VolleyError error) {
-                                        Toast.makeText(getActivity(), "Error Volley: " + error.toString(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getActivity(), "Error de conexión: " + error.toString(), Toast.LENGTH_SHORT).show();
                                     }
                                 }
 

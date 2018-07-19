@@ -43,6 +43,10 @@ public class GeoListFragment extends Fragment {
 
     private FloatingActionButton fab;
 
+    private String extraURL;
+
+    private Boolean onGranada;
+
     public GeoListFragment() {}
 
     public static GeoListFragment createInstance(Bundle arg) {
@@ -59,19 +63,27 @@ public class GeoListFragment extends Fragment {
 
         final View v = inflater.inflate(R.layout.fragment_list, container, false);
 
-        Toast.makeText(getActivity(), "Localidad: " + getArguments().getString("ciudad"), Toast.LENGTH_LONG).show();
+        onGranada = getArguments().getBoolean("onGranada");
+
+        if(onGranada) {
+            extraURL = "?latitud=" + getArguments().getDouble("latitud") + "&longitud=" + getArguments().getDouble("longitud");
+        }else{
+            extraURL = "?localidad=" + getArguments().getString("localidad");
+        }
+
 
         // Botón flotante para pasar al modo de geolocalización
-        fab = (FloatingActionButton) v.findViewById(R.id.fab_location);
+        fab = v.findViewById(R.id.fab_location);
+
+        fab.setImageResource(R.mipmap.no_location);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              /*
-                //Snackbar.make(view, "Se presionó el FAB", Snackbar.LENGTH_LONG).setAction("Action", null).show();
 
-                Intent i = new Intent(v.getContext(), Geolocation.class);
+                Intent i = new Intent(v.getContext(), MainActivity.class);
                 startActivity(i);
-              */
+
             }
         });
 
@@ -96,9 +108,7 @@ public class GeoListFragment extends Fragment {
     public void cargarAdaptador() {
 
         // URL del servidor
-        String url = "http://192.168.1.36/noticias_web/gestion/php_scripts/app_obtener_noticias.php";
-
-        //String url = "http://bahia.ugr.es/~noticiasapp/gestion/php_scripts/app_obtener_noticias.php";
+        String url = "http://192.168.1.36/noticias_web/gestion/php_scripts/app_obtener_geonoticias.php" + extraURL;
 
         // Petición GET
         VolleyS.getInstance(getActivity()).addToRequestQueue(
@@ -117,7 +127,7 @@ public class GeoListFragment extends Fragment {
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(getActivity(), "Error Volley: " + error.toString(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "Error de conexión: "  + error.toString(), Toast.LENGTH_SHORT).show();
                             }
                         }
 
@@ -135,8 +145,15 @@ public class GeoListFragment extends Fragment {
             // Obtener atributo "estado"
             String estado = response.getString("estado");
 
+            if(onGranada){
+                ((GeoListActivity) getActivity()).getSupportActionBar().setTitle(
+                        "Granada - " + response.getString("localidad"));
+            }else ((GeoListActivity) getActivity()).getSupportActionBar().setTitle(
+                    response.getString("localidad"));
+
             // Realizar acción según estado
             switch (estado) {
+
                 case "1": // ÉXITO
                     // Obtener información de noticias JSON
                     JSONArray info_noticias = response.getJSONArray("noticias");
@@ -147,11 +164,20 @@ public class GeoListFragment extends Fragment {
                     // Setear adaptador a la lista
                     listaRV.setAdapter(adapter);
                     break;
-                case "2": // FALLIDO
+
+                case "2": // NO HAY NOTICIAS
                     String mensaje2 = response.getString("mensaje");
                     Toast.makeText(
                             getActivity(),
                             mensaje2,
+                            Toast.LENGTH_LONG).show();
+                    break;
+
+                case "3": // ERROR DE LOCALIZACIÓN
+                    String mensaje3 = response.getString("mensaje");
+                    Toast.makeText(
+                            getActivity(),
+                            mensaje3,
                             Toast.LENGTH_LONG).show();
                     break;
             }

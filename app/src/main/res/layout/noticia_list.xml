@@ -13,21 +13,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginLeft="1dp"
         android:layout_weight="3">
+
+        <!-- Ubicación de cada noticia -->
+        <TextView
+            android:id="@+id/ubicacionList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ubicación noticia"
+            android:textStyle="bold"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="6dp"
+            android:textSize="15sp"/>
 
         <!-- Sección de cada noticia -->
         <TextView
             android:id="@+id/seccionList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="3dp"
+            android:layout_marginBottom="4dp"
             android:layout_marginEnd="15dp"
             android:layout_marginRight="15dp"
-            android:layout_marginTop="8dp"
             android:lineSpacingMultiplier="1.15"
             android:text="Sección noticia"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="12sp" />
+            android:textStyle="italic"
+            android:textSize="15sp" />
 
         <!-- Titular de cada noticia -->
         <TextView
@@ -37,7 +49,7 @@
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
-            android:textSize="17sp"
+            android:textSize="18sp"
             android:text="Titular noticia"
             android:lineSpacingMultiplier="1.1"
             android:textColor="#000000" />
@@ -53,7 +65,7 @@
         <ImageView
             android:id="@+id/imagenList"
             android:layout_width="110dp"
-            android:layout_height="50dp"
+            android:layout_height="70dp"
             android:paddingBottom="8dp"
             android:paddingTop="8dp"
             android:layout_weight="1"

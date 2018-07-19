@@ -37,6 +37,8 @@ public class NoticiaFragment extends Fragment {
     private TextView titular;
     private TextView texto;
     private TextView seccion;
+    private TextView ubicacion;
+    private TextView fechahora;
     private String extraID;
     private Gson gson = new Gson();
 
@@ -56,9 +58,11 @@ public class NoticiaFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_noticia, container, false);
 
         // Obtención de views
-        titular = (TextView) v.findViewById(R.id.titularNoticia);
-        texto = (TextView) v.findViewById(R.id.textoNoticia);
-        seccion = (TextView) v.findViewById(R.id.seccionNoticia);
+        titular = v.findViewById(R.id.titularNoticia);
+        texto = v.findViewById(R.id.textoNoticia);
+        seccion = v.findViewById(R.id.seccionNoticia);
+        ubicacion = v.findViewById(R.id.ubicacionNoticia);
+        fechahora = v.findViewById(R.id.fechahoraNoticia);
 
         // Obtener extra del intent de envío
         extraID = getArguments().getString(String.valueOf(R.string.id_extra));
@@ -126,7 +130,8 @@ public class NoticiaFragment extends Fragment {
                     titular.setText(noticia.getTitular());
                     texto.setText(noticia.getTexto());
                     seccion.setText(noticia.getSeccion());
-
+                    ubicacion.setText(noticia.getUbicacion());
+                    fechahora.setText(noticia.getFecha() + "  |  " + noticia.getHora());
 
                 break;
 
