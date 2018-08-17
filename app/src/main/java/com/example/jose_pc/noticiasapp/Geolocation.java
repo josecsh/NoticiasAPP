@@ -47,7 +47,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import butterknife.ButterKnife;
 
 public class Geolocation extends AppCompatActivity {
 
@@ -87,9 +86,6 @@ public class Geolocation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.geolocation_wait);
-
-        // VER QUE HACE ESTO
-        ButterKnife.bind(this);
 
         // Inicializa las librerias necesarias
         init();
@@ -134,18 +130,14 @@ public class Geolocation extends AppCompatActivity {
     private void updateLocationUI() {
         if (mCurrentLocation != null) {
 
-            //latitude = mCurrentLocation.getLatitude();
-            //longitude = mCurrentLocation.getLongitude();
+            latitude = mCurrentLocation.getLatitude();
+            longitude = mCurrentLocation.getLongitude();
 
             // Casa (zaidin)
             //latitude = 37.161946;
             //longitude = -3.594356;
 
-            // Apartamento playa
-            //latitude = 36.732522;
-            //longitude = -3.682933;
-
-            // Motril
+            // Sierra Mágina (Motril)
             //latitude = 37.744335;
             //longitude = -3.523801;
 
@@ -157,9 +149,21 @@ public class Geolocation extends AppCompatActivity {
             //latitude= 37.386108;
             //longitude= -5.991456;
 
+            // Ogíjares
+            //latitude= 37.119989;
+            //longitude= -3.603772;
+
+            // Albolote
+            //latitude= 37.229166;
+            //longitude= -3.653657;
+
+            // Baza
+            //latitude= 37.487136;
+            //longitude= -2.768250;
+
             // Churriana de la Vega
-            latitude = 37.145926;
-            longitude = -3.646057;
+            //latitude = 37.145926;
+            //longitude = -3.646057;
 
             // Casa Lorena (chana)
             //latitude = 37.190968;

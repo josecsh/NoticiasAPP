@@ -16,16 +16,20 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NoticiaActivity" />
-        <activity android:name=".Geolocation" />
-        <activity android:name=".GeoListActivity" />
+        <activity android:name=".NoticiaActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Geolocation"
+            android:screenOrientation="portrait" />
+        <activity android:name=".GeoListActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

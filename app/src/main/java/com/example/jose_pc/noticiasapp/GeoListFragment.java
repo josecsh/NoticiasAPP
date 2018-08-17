@@ -110,6 +110,8 @@ public class GeoListFragment extends Fragment {
         // URL del servidor
         String url = "http://192.168.1.36/noticias_web/gestion/php_scripts/app_obtener_geonoticias.php" + extraURL;
 
+        //String url = "http://betatun.ugr.es/~noticiasapp/gestion/php_scripts/app_obtener_geonoticias.php" + extraURL;
+
         // Petición GET
         VolleyS.getInstance(getActivity()).addToRequestQueue(
                 new JsonObjectRequest(
@@ -149,7 +151,7 @@ public class GeoListFragment extends Fragment {
                 ((GeoListActivity) getActivity()).getSupportActionBar().setTitle(
                         "Granada - " + response.getString("localidad"));
             }else ((GeoListActivity) getActivity()).getSupportActionBar().setTitle(
-                    response.getString("localidad"));
+                    getArguments().getString("localidad"));
 
             // Realizar acción según estado
             switch (estado) {
