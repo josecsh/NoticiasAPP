@@ -52,26 +52,19 @@ public class Geolocation extends AppCompatActivity {
 
     private static final String TAG = Geolocation.class.getSimpleName();
 
+    // Variables para algoritmo de localización
     private double latitude, longitude;
     private String localidad;
     private String cp;
     private Boolean onGranada = false;
 
-    // location last updated time
+    // Última localización
     private String mLastUpdateTime;
 
-    // location updates interval - 10sec
     private static final long UPDATE_INTERVAL_IN_MILLISECONDS = 10000;
-
-    // fastest updates interval - 5 sec
-    // location updates will be received if another app is requesting the locations
-    // than your app can handle
     private static final long FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS = 5000;
-
     private static final int REQUEST_CHECK_SETTINGS = 100;
 
-
-    // bunch of location related apis
     private FusedLocationProviderClient mFusedLocationClient;
     private SettingsClient mSettingsClient;
     private LocationRequest mLocationRequest;
@@ -79,7 +72,6 @@ public class Geolocation extends AppCompatActivity {
     private LocationCallback mLocationCallback;
     private Location mCurrentLocation;
 
-    // boolean flag to toggle the ui
     private Boolean mRequestingLocationUpdates;
 
     @Override
@@ -102,7 +94,7 @@ public class Geolocation extends AppCompatActivity {
             @Override
             public void onLocationResult(LocationResult locationResult) {
                 super.onLocationResult(locationResult);
-                // location is received
+                // localizacion recibida
                 mCurrentLocation = locationResult.getLastLocation();
                 mLastUpdateTime = DateFormat.getTimeInstance().format(new Date());
 
@@ -111,11 +103,6 @@ public class Geolocation extends AppCompatActivity {
         };
 
         mRequestingLocationUpdates = false;
-
-
-        // --------------------------------------------------------------------------------
-        // ----------- Probar a quitar el intervalo cuando tenga servidor -----------------
-        // --------------------------------------------------------------------------------
 
         mLocationRequest = new LocationRequest();
         mLocationRequest.setInterval(UPDATE_INTERVAL_IN_MILLISECONDS);
@@ -133,7 +120,7 @@ public class Geolocation extends AppCompatActivity {
             latitude = mCurrentLocation.getLatitude();
             longitude = mCurrentLocation.getLongitude();
 
-            // Casa (zaidin)
+            // Zaidin
             //latitude = 37.161946;
             //longitude = -3.594356;
 
@@ -165,7 +152,7 @@ public class Geolocation extends AppCompatActivity {
             //latitude = 37.145926;
             //longitude = -3.646057;
 
-            // Casa Lorena (chana)
+            // Chana
             //latitude = 37.190968;
             //longitude = -3.624540;
 
