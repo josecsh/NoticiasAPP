@@ -76,11 +76,14 @@ public class NoticiaFragment extends Fragment {
     // Obtiene los datos desde el servidor
     public void cargarDatos() {
 
+        // URL local desde fuera
+        String url = "http://ebb31cd4.ngrok.io/noticias_web/gestion/php_scripts/app_obtener_por_id.php?idNoticia=" + extraID;
+
         // URL del servidor
-        String url = "http://betatun.ugr.es/~noticiasapp/gestion/php_scripts/app_obtener_por_id.php?idNoticia=" + extraID;
+        //String url = "http://betatun.ugr.es/~noticiasapp/gestion/php_scripts/app_obtener_por_id.php?idNoticia=" + extraID;
 
         // URL local
-        //String url = "http://192.168.1.36/noticias_web/gestion/php_scripts/app_obtener_por_id.php?idNoticia=" + extraID;
+        //String url = "http://192.168.1.34/noticias_web/gestion/php_scripts/app_obtener_por_id.php?idNoticia=" + extraID;
 
         // Realizar petición de noticia por ID
         VolleyS.getInstance(getActivity()).addToRequestQueue(

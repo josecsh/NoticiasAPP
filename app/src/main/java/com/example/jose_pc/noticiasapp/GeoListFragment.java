@@ -107,11 +107,14 @@ public class GeoListFragment extends Fragment {
     // Carga el adaptador con la información obtenida en la respuesta
     public void cargarAdaptador() {
 
+        // URL local desde fuera
+        String url = "http://ebb31cd4.ngrok.io/noticias_web/gestion/php_scripts/app_obtener_geonoticias.php" + extraURL;
+
         // URL del servidor
-        String url = "http://betatun.ugr.es/~noticiasapp/gestion/php_scripts/app_obtener_geonoticias.php" + extraURL;
+        //String url = "http://betatun.ugr.es/~noticiasapp/gestion/php_scripts/app_obtener_geonoticias.php" + extraURL;
 
         // URL local
-        //String url = "http://192.168.1.36/noticias_web/gestion/php_scripts/app_obtener_geonoticias.php" + extraURL;
+        //String url = "http://192.168.1.34/noticias_web/gestion/php_scripts/app_obtener_geonoticias.php" + extraURL;
 
         // Petición GET
         VolleyS.getInstance(getActivity()).addToRequestQueue(

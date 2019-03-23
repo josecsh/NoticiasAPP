@@ -120,42 +120,6 @@ public class Geolocation extends AppCompatActivity {
             latitude = mCurrentLocation.getLatitude();
             longitude = mCurrentLocation.getLongitude();
 
-            // Zaidin
-            //latitude = 37.161946;
-            //longitude = -3.594356;
-
-            // Sierra Mágina (Motril)
-            //latitude = 37.744335;
-            //longitude = -3.523801;
-
-            // Beiro
-            //latitude=37.193017;
-            //longitude=-3.600814;
-
-            // Sevilla
-            //latitude= 37.386108;
-            //longitude= -5.991456;
-
-            // Ogíjares
-            //latitude= 37.119989;
-            //longitude= -3.603772;
-
-            // Albolote
-            //latitude= 37.229166;
-            //longitude= -3.653657;
-
-            // Baza
-            //latitude= 37.487136;
-            //longitude= -2.768250;
-
-            // Churriana de la Vega
-            //latitude = 37.145926;
-            //longitude = -3.646057;
-
-            // Chana
-            //latitude = 37.190968;
-            //longitude = -3.624540;
-
             stopLocationUpdates();
 
             getLocation();
